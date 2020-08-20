@@ -1,0 +1,73 @@
+<b>Editace oblíbeného účtu</b>
+<br/><br/>
+
+<form ng-submit="updateAccountFavourite()" class="form-group" name="updateAccountFavForm"> 
+<div class="form-group"  ng-init="updateInit()">
+<label for="accountFavouriteNameInput">Název oblíbeného účtu: *</label>
+<input type="text" ng-model="afDetail.accountFavouriteName" class="form-control" 
+       id="accountFavouriteNameInput" placeholder="Název oblíbeného účtu" 
+       maxlength="50" minlength="1"  required style="width:368px"><br/>
+<div class="form-group row">
+  <div class="col-xs-4">     
+<label for="bankInput">Banka: *</label> 
+<select ng-model="selectedBank" 
+        ng-options="y.code + ' - ' + y.bankName for (x, y) in bankCollection | orderBy:'bankName'" 
+        class="form-control" id="bankInput" 
+         required></select><br/>
+  </div>
+<div class="col-xs-4">  
+<label for="amountInput">Předdefinová částka: *</label>       
+<input type="number" step="0.01" ng-model="afDetail.paymentInfo.amount" class="form-control" 
+       id="amountInput" placeholder="Suma" 
+       min="0.01" required><br/>
+</div>
+</div>
+<div class="form-group row">
+  <div class="col-xs-4">        
+<label for="accountFavouritePrefixInput">Předčíslí účtu:</label>
+<input type="text" ng-model="afDetail.paymentInfo.accountPrefix" class="form-control" 
+       id="accountFavouritePrefixInput" placeholder="Předčíslí" 
+       maxlength="6" minlength="0" 
+       onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br/>       
+  </div>
+<div class="col-xs-4">          
+<label for="accountFavouriteNumberInput">Číslo účtu: *</label>
+<input type="text" ng-model="afDetail.paymentInfo.accountNumber" class="form-control" 
+       id="accountFavouriteNumberInput" placeholder="Číslo účtu" 
+       maxlength="10" minlength="10" required 
+       onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br/>   
+</div>
+</div>
+<div class="form-group row">
+  <div class="col-xs-4">      
+<label for="accountFavouriteVariableSymbol">Variabilní symbol:</label>
+<input type="text" ng-model="afDetail.paymentInfo.variableSymbol" class="form-control" 
+       id="accountFavouriteVariableSymbol" placeholder="Variabilní symbol" 
+       maxlength="10" minlength="0" 
+       onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br/>
+  </div>
+<div class="col-xs-4">        
+<label for="accountFavouriteConstantSymbol">Konstantní symbol:</label>
+<input type="text" ng-model="afDetail.paymentInfo.constantSymbol" class="form-control" 
+       id="accountFavouriteConstantSymbol" placeholder="Konstantní symbol" 
+       maxlength="4" minlength="0" 
+       onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br/>
+</div>
+</div>       
+<label for="accountFavouriteSpecificSymbol">Specifický symbol:</label>
+<input type="text" ng-model="afDetail.paymentInfo.specificSymbol" class="form-control" 
+       id="accountFavouriteSpecificSymbol" placeholder="Specifický symbol" 
+       maxlength="4" minlength="0" style="width:170px"
+       onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br/>   
+<label for="accountFavouriteMessageToRecipient">Zpráva příjemci:</label>
+<textarea type="text" ng-model="afDetail.paymentInfo.messageToRecipient" class="form-control" 
+          id="accountFavouriteMessageToRecipient" placeholder="Zpráva příjemci" 
+          maxlength="50" minlength="0" rows="2" style="width:250px"></textarea><br/> 
+* Povinné položky              
+</div>
+<button type="submit" class="btn btn-success" ng-disabled="updateAccountFavForm.$invalid" id="createButton">
+<span class="glyphicon glyphicon-ok"></span> Potvrdit změny
+</button> 
+</form>
+<p></p>
+

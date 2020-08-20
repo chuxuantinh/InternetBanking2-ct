@@ -1,0 +1,30 @@
+
+<b>Přehled plateb na oblíbený účet</b>
+<br/><br/>
+
+<button type="button" ng-click="go('/accountfav')" class="btn btn-success" >
+       <span class="glyphicon glyphicon-arrow-left"></span> Zpět na přehled oblíbených účtů
+</button>
+
+<div ng-init="getAllAccountPaymentFav()"> 
+
+<table class="table table-striped table-hover">
+
+   <thead>
+      <tr>
+        <th>Datum</th>
+        <th>Z účtu</th>
+        <th>Částka</th>
+      </tr>
+    </thead>
+
+  <tr ng-repeat="x in rowCollection">
+    <td>{{ x.paymentDate }}</a></td>
+    <td>{{ x.fromAccount.accountName }}</td>
+    <td style="color:red">
+      - {{ x.paymentInfo.amount }} {{ x.toAccount.currency.symbol }}
+    </td>
+  </tr>
+</table>
+
+</div>

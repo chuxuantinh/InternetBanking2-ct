@@ -1,0 +1,38 @@
+<b>Detail oblíbeného účtu</b>
+<br/><br/>
+
+<div ng-init="getAccountFavourite()"> 
+
+<p><b>Název oblíbeného účtu:</b> {{afDetail.accountFavouriteName}}</p>
+
+<p><b>Předčíslí účtu:</b> {{afDetail.paymentInfo.accountPrefix}}</p>
+
+<p><b>Číslo účtu:</b> {{afDetail.paymentInfo.accountNumber}}</p>
+
+<p><b>Banka:</b> {{afDetail.paymentInfo.bank.bankName}}</p>
+
+<p><b>Předdefinová částka:</b> {{afDetail.paymentInfo.amount}}</p>
+
+<p><b>Variabilní symbol:</b> {{afDetail.paymentInfo.variableSymbol}}</p>
+
+<p><b>Specifický symbol:</b> {{afDetail.paymentInfo.specificSymbol}}</p>
+
+<p><b>Konstantní symbol:</b> {{afDetail.paymentInfo.constantSymbol}}</p>
+
+<p><b>Zpráva pro příjemce:</b> {{afDetail.paymentInfo.messageToRecipient}}</p>
+
+<p></p>
+
+<button type="button" ng-click="go('/paymentaccfav/' + afDetail.id)" class="btn btn-success" >
+       <span class="glyphicon glyphicon-share"></span> Poslat platbu
+</button>
+
+<button type="button" ng-click="go('/updateaccountfav/' + afDetail.id)" class="btn btn-primary">
+       <span class="glyphicon glyphicon-pencil"></span> Edituj
+</button> 
+
+<button type="button" ng-click="removeAccountFavourite(afDetail)" class="btn btn-danger">
+       <span class="glyphicon glyphicon-trash"></span> Smaž
+</button>
+
+</div>

@@ -1,0 +1,47 @@
+<b>Založení nového účtu</b>
+<br/><br/>
+
+<form ng-submit="createAccount()" class="form-group" name="newAccountForm"> 
+<div class="form-group"  ng-init="createInit()">
+<label for="accountNameInput">Název účtu: *</label>
+<input type="text" ng-model="AccountObj.accountName" class="form-control" 
+       id="accountNameInput" placeholder="Název účtu" 
+       maxlength="50" minlength="1" required style="width:250px"><br/>
+
+<label for="accountTypeInput">Typ účtu: *</label> 
+<select ng-model="selectedAccountType" 
+        ng-options="y.accountTypeName for (x, y) in accountTypeCollection | orderBy:'accountTypeName'"  
+        class="form-control" id="accountTypeInput"
+        style="width:170px" required></select><br/>
+
+<label for="currencyInput">Měna: *</label> 
+<select ng-model="selectedCurrency" 
+        ng-options="y.currencyName for (x, y) in currencyCollection | orderBy:'currencyName'"  
+        class="form-control" id="currencyInput"
+        style="width:170px" required></select><br/>
+
+<div class="form-group row">
+  <div class="col-xs-4">
+<label for="accountPrefixInput">Zvolte předčíslí účtu:</label>
+<input type="text" ng-model="AccountObj.accountPrefix" class="form-control" 
+       id="accountPrefixInput" placeholder="Předčíslí účtu" 
+       maxlength="6" minlength="0" 
+       onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br/>
+  </div>
+  <div class="col-xs-4">
+<label for="accountNumberInput">Zvolte číslo účtu: *</label>
+<input type="text" ng-model="AccountObj.accountNumber" class="form-control" 
+       id="accountNumberInput" placeholder="Číslo účtu" 
+       maxlength="10" minlength="10" 
+       onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+       required><br/>
+  </div>
+</div>
+* Povinné položky         
+</div>
+<button type="submit" class="btn btn-success" ng-disabled="newAccountForm.$invalid" id="createButton">
+<span class="glyphicon glyphicon-plus"></span> Založit
+</button> 
+</form>
+<p></p>
+

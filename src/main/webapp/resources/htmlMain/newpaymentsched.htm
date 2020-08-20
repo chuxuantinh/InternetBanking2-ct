@@ -1,0 +1,99 @@
+<b>Nová pravidelná platba</b>
+<br/><br/>
+
+<form ng-submit="createPaymentScheduled()" class="form-group" name="newPaymentSchedForm"> 
+<div class="form-group"  ng-init="createInit()">
+<div class="form-group row">
+  <div class="col-xs-4">           
+<label for="accountInput">Z účtu: *</label> 
+<select ng-model="selectedAccount" 
+        ng-options="y.accountName + ' ('  + y.balance + ' ' + y.currency.symbol  + ')' for (x, y) in accountCollection | orderBy:'accountName'"  
+        class="form-control" id="accountInput"
+        style="width:170px" required></select><br/>
+  </div>
+<div class="col-xs-4"> 
+<label for="periodeInput">Perioda: *</label> 
+<select ng-model="selectedPeriode"  
+        class="form-control" id="periodeInput"
+        style="width:170px" required>
+  <option value="MONTHLY">Měsíčně</option>
+  <option value="YEARLY">Ročně</option>
+</select><br/>
+</div>
+</div>
+<div class="form-group row">
+  <div class="col-xs-4">   
+<label for="paymentDateInput">První platba: *</label>       
+<input type="date" ng-model="PaymentScheduledObj.paymentDate" class="form-control" 
+       id="paymentDateInput" style="width:170px" min={{today}} required><br/>
+  </div>
+<div class="col-xs-4"> 
+<label for="endDateInput">Datum ukončení: *</label>       
+<input type="date" ng-model="PaymentScheduledObj.endDate" class="form-control" 
+       id="endDateInput" style="width:170px" min={{today}} required><br/>
+</div>
+</div>
+<div class="form-group row">
+  <div class="col-xs-4">   
+<label for="amountInput">Suma: *</label>       
+<input type="number" step="0.01" ng-model="PaymentInfoObj.amount" class="form-control" 
+       id="amountInput" placeholder="Suma" 
+       style="width:170px" min="0.01" required><br/>
+  </div>
+<div class="col-xs-4">        
+<label for="paymentScheduledPrefixInput">Předčíslí účtu:</label>
+<input type="text" ng-model="PaymentInfoObj.accountPrefix" class="form-control" 
+       id="paymentScheduledPrefixInput" placeholder="Předčíslí" 
+       maxlength="6" minlength="0" style="width:170px"
+       onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br/>       
+</div>
+</div>
+<div class="form-group row">
+  <div class="col-xs-4">          
+<label for="paymentScheduledNumberInput">Číslo účtu: *</label>
+<input type="text" ng-model="PaymentInfoObj.accountNumber" class="form-control" 
+       id="paymentScheduledNumberInput" placeholder="Číslo účtu" 
+       maxlength="10" minlength="10" required style="width:170px"
+       onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br/>
+  </div>
+<div class="col-xs-4"> 
+<label for="bankInput">Banka: *</label> 
+<select ng-model="selectedBank" 
+        ng-options="y.code + ' - ' + y.bankName for (x, y) in bankCollection | orderBy:'bankName'"  
+        class="form-control" id="bankInput"
+        style="width:170px" required></select><br/>       
+</div>
+</div>
+<div class="form-group row">
+  <div class="col-xs-4">   
+<label for="paymentScheduledVariableSymbol">Variabilní symbol:</label>
+<input type="text" ng-model="PaymentInfoObj.variableSymbol" class="form-control" 
+       id="paymentScheduledVariableSymbol" placeholder="Variabilní symbol" 
+       maxlength="10" minlength="0" style="width:170px"
+       onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br/>
+  </div>
+<div class="col-xs-4"> 
+<label for="paymentScheduledConstantSymbol">Konstantní symbol:</label>
+<input type="text" ng-model="PaymentInfoObj.constantSymbol" class="form-control" 
+       id="paymentScheduledConstantSymbol" placeholder="Konstantní symbol" 
+       maxlength="4" minlength="0" style="width:170px"
+       onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br/>
+</div>
+</div>
+<label for="paymentScheduledSpecificSymbol">Specifický symbol:</label>
+<input type="text" ng-model="PaymentInfoObj.specificSymbol" class="form-control" 
+       id="paymentScheduledSpecificSymbol" placeholder="Specifický symbol" 
+       maxlength="4" minlength="0" style="width:170px"
+       onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br/>       
+<label for="paymentScheduledMessageToRecipient">Zpráva příjemci:</label>
+<textarea type="text" ng-model="PaymentInfoObj.messageToRecipient" class="form-control" 
+          id="accountFavouriteMessageToRecipient" placeholder="Zpráva příjemci" 
+          maxlength="50" minlength="0" rows="2" style="width:250px"></textarea><br/>  
+* Povinné položky                     
+</div>
+<button type="submit" class="btn btn-success" ng-disabled="newPaymentSchedForm.$invalid" id="createButton">
+<span class="glyphicon glyphicon-plus"></span> Přidat
+</button> 
+</form>
+<p></p>
+

@@ -1,0 +1,96 @@
+<div class="center_div">
+<h2>Registrace nového klienta</h2>
+<br/><br/>                 
+
+<form ng-submit="createClient()" class="form-group" name="newClientForm"> 
+<div class="form-group"  ng-init="createInit()">
+<div class="form-group row">
+  <div class="col-xs-4"> 
+<label for="firstNameInput">Jméno: *</label>
+<input type="text" ng-model="ClientObj.firstName" class="form-control" 
+       id="firstNameInput" placeholder="Jméno" 
+       maxlength="100" minlength="1" required ><br/>
+  </div>
+<div class="col-xs-4">
+<label for="lastNameInput">Příjmení: *</label>
+<input type="text" ng-model="ClientObj.lastName" class="form-control" 
+       id="lastNameInput" placeholder="Příjmení" 
+       maxlength="100" minlength="1" required ><br/>
+</div>
+</div>
+<div class="form-group row">
+  <div class="col-xs-4">  
+<label for="personalNumberInput">Rodné číslo: *</label>
+<input type="text" ng-model="ClientObj.personalNumber" class="form-control" 
+       id="personalNumberInput" placeholder="Rodné číslo" 
+       maxlength="50" minlength="1" required ><br/>
+  </div>
+<div class="col-xs-4">
+<label for="emailInput">Kontaktní e-mail: *</label>
+<input type="email" ng-model="ClientObj.email" class="form-control" 
+       id="emailInput" placeholder="E-mail" 
+       maxlength="50" minlength="1" required ><br/>
+</div>
+</div> 
+<label for="telephoneNumberInput">Telefon: *</label>
+<input type="text" ng-model="ClientObj.telephoneNumber" class="form-control" 
+       id="telephoneNumberInput" placeholder="Telefon" 
+       maxlength="50" minlength="1" required style="width:160px"><br/>
+
+
+<div class="form-group row">
+  <div class="col-xs-4">  
+<label for="ssoIdInput">Identifikační jméno: *</label>
+<input type="text" ng-model="ClientObj.ssoId" class="form-control" 
+       id="ssoIdInput" placeholder="Identifikační jméno" 
+       maxlength="30" minlength="1" required ><br/>
+  </div>
+<div class="col-xs-4">
+<label for="passwordInput">Heslo: *</label>
+<input type="password" ng-model="ClientObj.password" class="form-control" 
+       id="passwordInput" placeholder="Heslo" 
+       maxlength="100" minlength="1" required ><br/>
+</div>
+</div>
+<div class="form-group row">
+  <div class="col-xs-4">  
+<label for="countryInput">Země: *</label> 
+<select ng-model="selectedCountry" 
+        ng-options="y.countryName for (x, y) in countryCollection | orderBy:'countryName'"  
+        class="form-control" id="countryInput"
+        required></select><br/>
+  </div>
+<div class="col-xs-4">
+<label for="cityInput">Město: *</label>
+<input type="text" ng-model="AddressObj.city" class="form-control" 
+       id="cityInput" placeholder="Město" 
+       maxlength="100" minlength="1" required ><br/>
+</div>
+</div>
+<div class="form-group row">
+  <div class="col-xs-4">  
+<label for="streetInput">Ulice: *</label>
+<input type="text" ng-model="AddressObj.street" class="form-control" 
+       id="streetInput" placeholder="Ulice" 
+       maxlength="100" minlength="1" required ><br/>
+  </div>
+<div class="col-xs-4">
+<label for="streetNumberInput">Číslo domu: *</label>
+<input type="text" ng-model="AddressObj.streetNumber" class="form-control" 
+       id="streetNumberInput" placeholder="Číslo domu" 
+       maxlength="50" minlength="1" required ><br/>
+</div>
+</div>
+<label for="zipCodeInput">PSČ: *</label>
+<input type="text" ng-model="AddressObj.zipCode" class="form-control" 
+       id="zipCodeInput" placeholder="PSČ" 
+       maxlength="50" minlength="5" required style="width:160px"
+       onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br/>
+* Povinné položky    
+</div>
+<button type="submit" class="btn btn-success" ng-disabled="newClientForm.$invalid" id="createButton">
+<span class="glyphicon glyphicon-plus"></span> Přidat
+</button> 
+</form>
+<p></p>
+</div>

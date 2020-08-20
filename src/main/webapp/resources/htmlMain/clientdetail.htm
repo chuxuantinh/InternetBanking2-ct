@@ -1,0 +1,33 @@
+<b>Detail klienta</b>
+<br/><br/>
+
+<div ng-init="getClient()"> 
+
+<p><b>Jméno:</b> {{clDetail.firstName}}</p>
+
+<p><b>Příjmení:</b> {{clDetail.lastName}}</p>
+
+<p><b>Rodné číslo:</b> {{clDetail.personalNumber}}</p>
+
+<p><b>Země:</b> {{clDetail.residenceAddress.country.countryName}}</p>
+
+<p><b>Město:</b> {{clDetail.residenceAddress.city}}</p>
+
+<p><b>Ulice a číslo:</b> {{clDetail.residenceAddress.street}} {{clDetail.residenceAddress.streetNumber}}</p>
+
+<p><b>PSČ:</b> {{clDetail.residenceAddress.zipCode}}</p>
+
+<p><b>E-mail:</b> {{clDetail.email}}</p>
+
+<p><b>Telefonní číslo:</b> {{clDetail.telephoneNumber}} </p>
+
+<p><b>SSO ID:</b> {{clDetail.ssoId}} </p>
+
+
+<p></p>
+
+<button type="button" ng-click="go('/updateclient/')" class="btn btn-primary">
+       <span class="glyphicon glyphicon-pencil"></span> Změň kontakt / heslo
+</button> 
+
+</div>

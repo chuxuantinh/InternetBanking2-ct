@@ -1,0 +1,24 @@
+<b>Upravit limity karty</b>
+<br/><br/>
+
+<form ng-submit="updateCard()" class="form-group" name="updateCardForm"> 
+<div class="form-group"  ng-init="updateInit()">
+
+<label for="dayWithdrawLimitInput">Limit výběrů za den v {{caDetail.account.currency.symbol}}: *</label>
+<input type="text" ng-model="caDetail.dayWithdrawLimit" class="form-control" 
+       id="dayWithdrawLimitInput" placeholder="Výběry za den" 
+       maxlength="6" minlength="0" required style="width:170px"
+       onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br/>
+<label for="dayPayLimitInput">Limit plateb za den: *</label>
+<input type="text" ng-model="caDetail.dayPayLimit" class="form-control" 
+       id="dayPayLimitInput" placeholder="Platby za den" 
+       maxlength="6" minlength="0" style="width:170px"
+       onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+       required><br/>
+* Povinné položky             
+</div>
+<button type="submit" class="btn btn-success" ng-disabled="updateCardForm.$invalid" id="createButton">
+<span class="glyphicon glyphicon-ok"></span> Potvrdit změny
+</button> 
+</form>
+<p></p>

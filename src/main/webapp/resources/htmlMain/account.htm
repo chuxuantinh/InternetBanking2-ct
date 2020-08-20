@@ -1,0 +1,35 @@
+
+<b>Přehled vašich účtů</b>
+<br/><br/>
+
+<button type="button" ng-click="go('/newaccount')" class="btn btn-success" >
+       <span class="glyphicon glyphicon-plus"></span> Založit nový
+</button>
+
+<div ng-init="getAllAccount()"> 
+
+<table class="table table-striped table-hover">
+
+   <thead>
+      <tr>
+        <th>Název účtu</th>
+        <th>Typ účtu</th>
+        <th>Hodnota</th>
+        <th>Přehled plateb</th>
+      </tr>
+    </thead>
+
+  <tr ng-repeat="x in rowCollection | orderBy : 'accountName'">
+    <td><a href="/main#/accountdetail/{{ x.id }}">{{ x.accountName }}</a></td>
+    <td>{{ x.accountType.accountTypeName }}</td>
+    <td><b>{{ x.balance }} {{ x.currency.symbol }}</b></td>
+    <td>
+      <button type="button" ng-click="go('/payment/account/' + x.id)" class="btn btn-success" >
+       <span class="glyphicon glyphicon-th-list"> Přehled
+      </button>
+    </td>
+  </tr>
+</table>
+
+</div>
+

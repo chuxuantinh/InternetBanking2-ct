@@ -1,0 +1,17 @@
+<b>Editace účtu</b>
+<br/><br/>
+
+<form ng-submit="updateAccount()" class="form-group" name="updateAccountForm"> 
+<div class="form-group"  ng-init="updateInit()">
+<label for="accountNameInput">Název účtu: *</label>
+<input type="text" ng-model="acDetail.accountName" class="form-control" 
+       id="accountNameInput" placeholder="Název účtu" 
+       maxlength="50" minlength="1" required style="width:250px"><br/>
+* Povinná položka
+</div>
+<button type="submit" class="btn btn-success" ng-disabled="updateAccountForm.$invalid" id="createButton">
+<span class="glyphicon glyphicon-ok"></span> Potvrdit změny
+</button> 
+</form>
+<p></p>
+

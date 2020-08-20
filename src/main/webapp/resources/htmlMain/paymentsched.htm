@@ -1,0 +1,31 @@
+
+<b>Přehled vašich pravidelných plateb</b>
+<br/><br/>
+
+<button type="button" ng-click="go('/newpaymentsched')" class="btn btn-success" >
+       <span class="glyphicon glyphicon-plus"></span> Přidat
+</button>
+
+<div ng-init="getAllPaymentScheduled()"> 
+
+<table class="table table-striped table-hover">
+
+   <thead>
+      <tr>
+        <th>Na účet</th>
+        <th>Z účtu</th>
+        <th>Částka</th>
+        <th>Perioda</th>
+      </tr>
+    </thead>
+
+  <tr ng-repeat="x in rowCollection | orderBy : 'paymentInfo.accountNumber'">
+    <td><a href="/main#/paymentscheddetail/{{ x.id }}">{{ x.paymentInfo.accountNumber }}</a></td>
+    <td>{{ x.account.accountName }}</td>
+    <td>{{ x.paymentInfo.amount }} {{ x.account.currency.symbol }}</td>
+    <td>{{ x.periode }}</td>
+  </tr>
+</table>
+
+</div>
+

@@ -1,0 +1,30 @@
+<b>Detail účtu</b>
+<br/><br/>
+
+<div ng-init="getAccount()"> 
+
+<p><b>Název účtu:</b> {{acDetail.accountName}}</p>
+
+<p><b>Předčíslí:</b> {{acDetail.accountPrefix}}</p>
+
+<p><b>Číslo účtu:</b> {{acDetail.accountNumber}}</p>
+
+<p><b>Aktuální suma:</b> {{acDetail.balance}} {{acDetail.currency.symbol}}</p>
+
+<p><b>Měna:</b> {{acDetail.currency.currencyName}} </p>
+
+<p><b>Typ účtu:</b> {{acDetail.accountType.accountTypeName}} </p>
+
+<p><b>Úrok:</b> {{acDetail.accountType.interestRate}} %</p>
+
+<p></p>
+
+<button type="button" ng-click="go('/updateaccount/' + acDetail.id)" class="btn btn-primary">
+       <span class="glyphicon glyphicon-pencil"></span> Změň název
+</button> 
+
+<!--<button type="button" ng-click="removeAccount(acDetail)" class="btn btn-danger">
+       <span class="glyphicon glyphicon-remove"></span> Zruš účet
+</button>-->
+
+</div>

@@ -1,0 +1,30 @@
+<b>Žádost o novu kartu</b>
+<br/><br/>
+
+<form ng-submit="createCard()" class="form-group" name="newCardForm"> 
+<div class="form-group"  ng-init="createInit()">
+
+<label for="accountInput">K účtu: *</label> 
+<select ng-model="selectedAccount" 
+        ng-options="y.accountName for (x, y) in accountCollection | orderBy:'accountName'"  
+        class="form-control" id="accountInput"
+        style="width:170px" required></select><br/>
+
+<label for="dayWithdrawLimitInput">Limit výběrů za den: *</label>
+<input type="text" ng-model="CardObj.dayWithdrawLimit" class="form-control" 
+       id="dayWithdrawLimitInput" placeholder="Výběry za den" 
+       maxlength="6" minlength="0" required style="width:170px"
+       onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br/>
+<label for="dayPayLimitInput">Limit plateb za den: *</label>
+<input type="text" ng-model="CardObj.dayPayLimit" class="form-control" 
+       id="dayPayLimitInput" placeholder="Platby za den" 
+       maxlength="6" minlength="0" style="width:170px"
+       onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+       required><br/>
+* Povinné položky    
+</div>
+<button type="submit" class="btn btn-success" ng-disabled="newCardForm.$invalid" id="createButton">
+<span class="glyphicon glyphicon-plus"></span> Zažádat
+</button> 
+</form>
+<p></p>

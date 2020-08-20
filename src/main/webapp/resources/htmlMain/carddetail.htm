@@ -1,0 +1,30 @@
+<b>Detail karty</b>
+<br/><br/>
+
+<div ng-init="getCard()"> 
+
+<p><b>Přiřazena k účtu:</b> {{caDetail.account.accountName}}</p>
+
+<p><b>Číslo karty:</b> {{caDetail.cardNumber}}</p>
+
+<p><b>Bezpečnostní kód:</b> {{caDetail.securityCode}}</p>
+
+<p><b>Platnost do:</b> {{validityTo}}</p>
+
+<p><b>Stav:</b> {{activeFlag}}</p>
+
+<p><b>Limit výběrů za den:</b> {{caDetail.dayWithdrawLimit}} {{caDetail.account.currency.currencyName}}</p>
+
+<p><b>Limit plateb za den:</b> {{caDetail.dayPayLimit}} {{caDetail.account.currency.currencyName}}</p>
+
+<p></p>
+
+<button type="button" ng-click="go('/updatecard/' + caDetail.id)" class="btn btn-primary">
+       <span class="glyphicon glyphicon-pencil"></span> Změna limitů
+</button> 
+
+<button type="button" ng-click="changeStateOfCard(caDetail)" class="btn btn-warning">
+       <span class="glyphicon glyphicon-asterisk"></span> {{activeInfo}}
+</button>
+
+</div>

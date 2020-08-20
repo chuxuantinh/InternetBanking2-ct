@@ -1,0 +1,40 @@
+<b>Detail pravidelné platby</b>
+<br/><br/>
+
+<div ng-init="getPaymentScheduled()"> 
+
+<p><b>Z účtu:</b> {{psDetail.account.accountName}}</p>
+
+<p><b>Perioda:</b> {{periode}}</p>
+
+<p><b>První platba:</b> {{paymentDate}}</p>
+
+<p><b>Datum ukončení:</b> {{endDate}}</p>
+
+<p><b>Suma:</b> {{psDetail.paymentInfo.amount}}  {{ psDetail.account.currency.symbol }}</p>
+
+<p><b>Předčíslí účtu:</b> {{psDetail.paymentInfo.accountPrefix}}</p>
+
+<p><b>Číslo účtu:</b> {{psDetail.paymentInfo.accountNumber}}</p>
+
+<p><b>Banka:</b> {{psDetail.paymentInfo.bank.bankName}}</p>
+
+<p><b>Variabilní symbol:</b> {{psDetail.paymentInfo.variableSymbol}}</p>
+
+<p><b>Specifický symbol:</b> {{psDetail.paymentInfo.specificSymbol}}</p>
+
+<p><b>Konstantní symbol:</b> {{psDetail.paymentInfo.constantSymbol}}</p>
+
+<p><b>Zpráva pro příjemce:</b> {{psDetail.paymentInfo.messageToRecipient}}</p>
+
+<p></p>
+
+<button type="button" ng-click="go('/updatepaymentsched/' + psDetail.id)" class="btn btn-primary">
+       <span class="glyphicon glyphicon-pencil"></span> Edituj
+</button> 
+
+<button type="button" ng-click="removePaymentScheduled(psDetail)" class="btn btn-danger">
+       <span class="glyphicon glyphicon-trash"></span> Smaž
+</button>
+
+</div>

@@ -1,0 +1,76 @@
+﻿<h3>Správa měn</h3>
+
+<br/>
+<form ng-submit="createCurrency()" class="form-group" name="currencyForm"> 
+<div class="form-group">
+<label for="currencyNameInput">Název měny:</label>
+<input type="text" ng-model="CurrencyObj.currencyName" class="form-control" 
+       id="currencyNameInput" placeholder="Název měny" 
+       maxlength="50" required style="width:40%">
+<label for="symbolInput">Symbol:</label>       
+<input type="text" maxlength="10" ng-model="CurrencyObj.symbol" class="form-control" 
+       id="symbolInput" placeholder="Symbol"  
+       required style="width:20%">
+</div>
+<button type="submit" class="btn btn-success" ng-disabled="currencyForm.$invalid" id="createButton">
+<span class="glyphicon glyphicon-plus"></span> Přidat
+</button> 
+</form>
+<p></p>
+
+<div ng-init="getAllCurrency()"> 
+
+  <script type="text/ng-template" id="display">
+    <td>{{ currency.currencyName }}</td>
+    <td>{{ currency.symbol }}</td>
+    <td>
+      <button type="button" ng-click="editRow(currency)" class="btn btn-primary"> 
+       <span class="glyphicon glyphicon-pencil"></span> Edituj
+      </button>
+      <button type="button" ng-click="removeCurrency(currency)" class="btn btn-danger">
+       <span class="glyphicon glyphicon-trash"> Smaž
+      </button>
+   </td>
+  </script>
+ <script type="text/ng-template" id="edit">
+    <td><input type="text" ng-model=currency.currencyName class="form-control input-sm"/></td>
+    <td><input type="text" ng-model=currency.symbol class="form-control input-sm"/></td>
+    <td>
+     <button type="button" class="btn btn-primary" ng-click="updateCurrency(currency)">
+      <span class="glyphicon glyphicon-floppy-save"> Ulož
+     </button>
+     <button type="button" class="btn btn-danger" ng-click="reset(currency)">
+      <span class="glyphicon glyphicon-remove-sign"> Zruš
+    </button>
+    </td>
+   </script>
+
+<table st-table="allCurrency" st-safe-src="rowCollection" class="table table-striped table-hover" >
+   <thead>
+   <tr>
+    <th style="width:30%">Název měny</th>   
+    <th style="width:10%">Symbol</th>   
+    <th style="width:10%">Editace/Mazání</th>
+   </tr> 
+   <tr>
+	<th><input st-search="currencyName" placeholder="hledej název měny" class="input-sm form-control" type="search"></th>
+  <th><input st-search="symbol" placeholder="hledej symbol měny" class="input-sm form-control" type="search"></th>
+   </tr>
+   </thead>
+   
+ <tbody> 
+  <tr ng-repeat="currency in allCurrency" ng-include="getTemplate(currency)"></tr>
+  </tbody> 
+  
+  <tfoot>
+	<tr>
+		<td colspan="3" class="text-center">
+		<div st-pagination="" st-items-by-page="10" st-displayed-pages="10"></div> 
+		</td>
+	</tr>
+  </tfoot>
+  
+</table>
+
+
+</div>

@@ -1,0 +1,42 @@
+
+<b>Přehled vašich oblíbených účtů</b>
+<br/><br/>
+
+<button type="button" ng-click="go('/newaccountfav')" class="btn btn-success" >
+       <span class="glyphicon glyphicon-plus"></span> Přidat
+</button>
+
+<div ng-init="getAllAccountFavourite()"> 
+
+<table class="table table-striped table-hover">
+
+   <thead>
+      <tr>
+        <th>Název oblíbeného účtu</th>
+        <th>Banka</th>
+        <th>Číslo účtu</th>
+        <th>Poslat platbu</th>
+        <th>Přehled plateb</th>
+      </tr>
+    </thead>
+
+  <tr ng-repeat="x in rowCollection | orderBy : 'accountFavouriteName'">
+    <td><a href="/main#/accountfavdetail/{{ x.id }}">{{ x.accountFavouriteName }}</a></td>
+    <td>{{ x.paymentInfo.bank.bankName }}</td>
+    <td>{{ x.paymentInfo.accountNumber }}</td>
+    <td>
+      <button type="button" ng-click="go('/paymentaccfav/' + x.id)" class="btn btn-success" >
+       <span class="glyphicon glyphicon-share"> Poslat
+      </button>
+    </td>
+    <td>
+       <button type="button" ng-click="go('/payment/accountfav/' + x.id)" 
+               class="btn btn-success" >
+       <span class="glyphicon glyphicon-th-list"> Přehled
+      </button>
+    </td>
+  </tr>
+</table>
+
+</div>
+
